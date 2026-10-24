@@ -10,7 +10,7 @@ D = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(D)
 NM = os.environ.get('JV_NODE_MODULES', os.path.join(ROOT, 'node_modules')) + '/'
 DIST = os.path.join(ROOT, 'dist'); os.makedirs(DIST, exist_ok=True)
-src = open(os.path.join(D, 'base', 'pi-netrunner-mobile.html')).read()
+src = open(os.path.join(D, 'base', 'pi-netrunner-mobile.html'), encoding='utf-8').read()
 s = src
 def rep(old, new, count=1):
     global s
@@ -23,7 +23,7 @@ def rep_between(start, end, new, keep_end=True):
     i = s.find(start); j = s.find(end, i + 1)
     if i < 0 or j < 0: sys.exit(f'RANGE MISSING: {start[:60]!r} .. {end[:60]!r}')
     s = s[:i] + new + (s[j:] if keep_end else s[j + len(end):])
-def rd(n): return open(os.path.join(D, 'modules', n)).read()
+def rd(n): return open(os.path.join(D, 'modules', n), encoding='utf-8').read()
 
 # ---------- branding + storage ----------
 rep('<title>Pi Netrunner Mobile</title>', '<title>Pandora Dee</title>')
